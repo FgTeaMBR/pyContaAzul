@@ -1,0 +1,30 @@
+{
+    "number": 12,
+    "emission": "2022-03-16T17:09:31.065Z",
+    "status": "string",
+    "customer_id": "string",
+    "products": [
+      {
+        "description": "Game Atari ET",
+        "quantity": 800,
+        "product_id": "string",
+        "value": 0
+      }
+    ],
+    "services": [
+      {
+        "description": "Exchange of Game Atari ET",
+        "quantity": 800,
+        "service_id": "string",
+        "value": 0
+      }
+    ],
+    "discount": {
+      "measure_unit": "VALUE",
+      "rate": 5
+    },
+    "due_day": 5,
+    "duration": 10,
+    "notes": "Contract for house rent",
+    "shipping_cost": 10
+  }

@@ -1,0 +1,15 @@
+{
+    "name": "Game Atari ET",
+    "value": 100,
+    "cost": 80,
+    "code": "Game-1",
+    "barcode": "501234567890",
+    "available_stock": 1000,
+    "ncm_code": "96140000",
+    "cest_code": "0100300",
+    "net_weight": 10,
+    "gross_weight": 15,
+    "category_id": "[c7288c09-829d-48b9-aee2-4f744e380587, 0483d282-2c22-11ec-8d3d-0242ac130003]",
+    "unit_measure": "KG",
+    "suppliers_id": "[c7288c09-829d-48b9-aee2-4f744e380587, 0483d282-2c22-11ec-8d3d-0242ac130003]"
+  }

@@ -1,0 +1,51 @@
+{
+    "number": 12,
+    "emission": "2022-03-16T17:09:31.066Z",
+    "status": "COMMITTED",
+    "customer_id": "62d05442-5e02-4fb3-978b-da7e58e1f770",
+    "seller_id": "62d05442-5e02-4fb3-978b-da7e58e1f771",
+    "products": [
+      {
+        "description": "Game Atari ET",
+        "quantity": 2,
+        "product_id": "f8ffb77a-3d52-42d7-9bec-ea38c0ef043d",
+        "value": 50
+      }
+    ],
+    "services": [
+      {
+        "description": "Fix car engine",
+        "quantity": 1,
+        "service_id": "e78c6d82-501a-4045-90c4-ae5b520f58dc",
+        "value": 200
+      }
+    ],
+    "discount": {
+      "measure_unit": "VALUE",
+      "rate": 5
+    },
+    "payment": {
+      "type": "CASH",
+      "method": "BANKING_BILLET",
+      "installments": [
+        {
+          "number": 1,
+          "value": 305,
+          "due_date": "2022-03-16T17:09:31.066Z",
+          "status": "PENDING",
+          "note": "NOTE",
+          "hasBillet": true
+        }
+      ],
+      "financialAccountId": "string",
+      "financialAccount": {
+        "uuid": "c7288c09-829d-48b9-aee2-4f744e380587",
+        "name": "Name of the account",
+        "accountType": "CHECKINGACCOUNT",
+        "billetConfigured": true
+      }
+    },
+    "notes": "Sale made by noon",
+    "shipping_cost": 10,
+    "category_id": "string"
+  }

@@ -1,0 +1,7 @@
+{
+    "name": "Fix car engine",
+    "type": "PROVIDED",
+    "value": 100,
+    "cost": 80,
+    "code": "FIX-ENG-001"
+  }
