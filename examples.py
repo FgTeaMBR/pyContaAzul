@@ -1,6 +1,6 @@
 import json
 import pyAzul
-
+import time
 API_URL = 'https://api.contaazul.com'
 
 with open('./auth/token.json', 'r') as read:
