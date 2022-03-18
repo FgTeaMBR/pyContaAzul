@@ -1,5 +1,8 @@
 import json
+import requests, base64
+from aiohttp import request
 import pyAzul
+import datetime
 import time
 
 API_URL = 'https://api.contaazul.com'
@@ -14,11 +17,18 @@ azul_services = pyAzul.Services(API_URL, ACCESS_TOKEN)
 azul_sales = pyAzul.Sales(API_URL, ACCESS_TOKEN)
 
 # Todas as vendas.
-print(azul_sales.get_sales())
+azul_sales.get_sales()
 
+# Vendas por filtro.
+azul_sales.get_sales(emission_start='15/03/2022', emission_end='16/03/2022')
+azul_sales.get_sales(status='COMMITTED')
+azul_sales.get_sales(size=1)
+
+# Vendas por Id.
+azul_sales.get_sales_byId('70f31792-e898-418d-9eea-fae274b4763f')
 
 # Nova venda.
-output_date = time.time_ns()//1_000_000
+output_date = time.time_ns() // 1_000_000
 nova_venda_body = {
     "emission": output_date,
     "status": "COMMITTED",
@@ -53,58 +63,58 @@ nova_venda_body = {
     }
 
 }
-azul_sales.new_sale(nova_venda_body)
+azul_sales.new_sale(nova_venda_body)  # Enviar nova venda.
 
 # Atualizar venda (Somente alguns campos são aceitos via API.
-nova_venda = azul_sales.get_sales_byId('f5b17060-dee5-4b18-971c-65ed60af2617')
-nova_venda['payment']['method'] = 'DEBIT_CARD'
-azul_sales.upt_sale('f5b17060-dee5-4b18-971c-65ed60af2617', nova_venda)
+atualizar_venda = azul_sales.get_sales_byId('70f31792-e898-418d-9eea-fae274b4763f')
+atualizar_venda['payment']['method'] = 'DEBIT_CARD'
+azul_sales.upt_sale('70f31792-e898-418d-9eea-fae274b4763f', atualizar_venda)
 
-
-#Deletar venda usando Id.
-azul_sales.del_sale('19008c9d-2574-460f-b333-6263b244efe6')
-
-
+# Deletar venda usando Id.
+azul_sales.del_sale('70f31792-e898-418d-9eea-fae274b4763f')
 
 # Listar todos os serviços ja criados.
-print(azul_services.get_service())
+azul_services.get_service()
+
+# Listar Serviços por filtro.
+azul_services.get_service(name='Nome do Servico')
+azul_services.get_service(code='01')
+azul_services.get_service(page=1)
 
 # Listar os serviços por Id.
-azul_services.get_service_byId('b2de5eac-cf9a-4595-acbd-ec17ac5d3627')
+azul_services.get_service_byId('70f31792-e898-418d-9eea-fae274b4763f')
 
 # Novo Serviço. Mais exemplos na pasta examples.
 new_service_body = {
-  "name": "Novo Servico",
-  "type": "PROVIDED",
-  "value": 100,
-  "cost": 50,
-  "code": "02"
+    "name": "Novo Servico",
+    "type": "PROVIDED",
+    "value": 100,
+    "cost": 50,
+    "code": "02"
 }
-azul_services.add_service(new_service_body)  # Enviar para a Conta Azul o novo serviço criado.
+azul_services.new_service(new_service_body)  # Enviar para a Conta Azul o novo serviço criado.
 
 # Atualizar um serviço.
-novo_servico = azul_services.get_service_byId('b2de5eac-cf9a-4595-acbd-ec17ac5d3627')  # Fazer a requisiçao do dict.
-novo_servico['name'] = 'Novo Nome'  # Atualizar o nome.
-azul_services.upt_service('b2de5eac-cf9a-4595-acbd-ec17ac5d3627', novo_servico)  # Enviar o novo dict para o Conta Azul.
+atualizar_servico = azul_services.get_service_byId(
+    '70f31792-e898-418d-9eea-fae274b4763f')  # Fazer a requisiçao do dict.
+atualizar_servico['name'] = 'Novo Nome'  # Atualizar o nome.
+azul_services.upt_service('b2de5eac-cf9a-4595-acbd-ec17ac5d3627',
+                          atualizar_servico)  # Enviar o novo dict para o Conta Azul.
 
 # Deletar um serviço usando o ID.
-azul_services.del_service('bb221bb0-8341-439e-b7fc-45315b8ee83f')
+azul_services.del_service('70f31792-e898-418d-9eea-fae274b4763f')
 
 # Obter a lista de produtos
-produtos_lista = azul_produtos.get_products()
-
+azul_produtos.get_products()
 
 # lista de produtos pelo nome
 produtos_nome = azul_produtos.get_products(name='Coca-Cola')
 
-
 # Obter lista de categorias dos produtos.
 produtos_cat = azul_produtos.cat_product()
 
-
 # Obter categoria de produtos por ID.
-produtos_cat_id = azul_produtos.cat_product_byId('233f1d9a-1749-4f75-bc84-2be56a28d41c')
-
+produtos_cat_id = azul_produtos.cat_product_byId('70f31792-e898-418d-9eea-fae274b4763f')
 
 # Criar o novo produto. Veja mais exemplos e campos na pasta examples.
 novo_produto = {
@@ -113,14 +123,14 @@ novo_produto = {
     "cost": 5,
     "code": "08"
 
-    }
+}
 azul_produtos.new_product(novo_produto)  # Enviar o novo produto para o site..
 
 # Atualizar um produto.
-att_produto = (azul_produtos.get_product_byId('e201f6f1-ca70-4f8d-8eec-7a0a91f74687'))
+att_produto = (azul_produtos.get_product_byId('70f31792-e898-418d-9eea-fae274b4763f'))
 att_produto['name'] = 'Novo Produto2'  # Setar o novo valor
-azul_produtos.upt_product('e201f6f1-ca70-4f8d-8eec-7a0a91f74687', att_produto)  # Enviar o produto com o valor adicionado para a Conta Azul.
-
+azul_produtos.upt_product('70f31792-e898-418d-9eea-fae274b4763f',
+                          att_produto)  # Enviar o produto com o valor adicionado para a Conta Azul.
 
 # Deletar um produto usando o ID.
-azul_produtos.del_product('e201f6f1-ca70-4f8d-8eec-0000000s1sx')
+azul_produtos.del_product('70f31792-e898-418d-9eea-fae274b4763f')
