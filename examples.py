@@ -1,9 +1,5 @@
 import json
-import requests, base64
-from aiohttp import request
 import pyAzul
-import datetime
-import time
 
 API_URL = 'https://api.contaazul.com'
 
