@@ -5,10 +5,10 @@ API em python para integração com o site Conta Azul.
 <p>https://developers.contaazul.com/</p>
 
 <h2>Como usar:</h2>
-<p>INSTALE os requeriments.
+<p>INSTALE os requirements.
 <p>Crie uma conta no site https://portaldevs.contaazul.com .</p>
 Apos criar sua conta , crie uma nova aplicação para gerar o seu "<b>Client Id</b>" e seu "<b>Client Secret</b>".
-<p>Caso for utilizar em host local, use a url de redirecionamento: <b>http://localhost:8000/auth/get-token</b>.
+<p>Utilize a url de redirecionamento: <b>http://localhost:8000/auth/get-token</b>.
 
 Apos criado o Client Id, vá para a pasta auth/oauth e edit o arquivo constants.py.
   <p>Adicione suas informações obtidas no site https://portaldevs.contaazul.com/</p>
