@@ -19,7 +19,7 @@ Apos criado o Client Id, vá para a pasta auth/oauth e edit o arquivo constants.
   <h2>Iniciando o Serviço:</h2>
   <p>Navegue ate a pasta auth novamente e inice o arquivo start.bat.
   <p>Efetue Login na sua Conta Azul que queria usar a api. https://app.contaazul.com/
-  <p>Após efetuar login , abra o navegador e cole o endereço http://localhost:8000/auth/authorize
+  <p>Após efetuar login , abra o navegador e cole o endereço <a href="http://localhost:8000/auth/authorize">http://localhost:8000/auth/authorize</a>
     para liberar o acesso a sua conta e gerar o token que será utilizado na sua api.
 <p>Clique em <b>Autorizar</b> para liberar o acesso a sua conta.</p>
 <p>Para saber se o token foi gerado com sucesso , teste sua api.<p>
